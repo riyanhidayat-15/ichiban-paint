@@ -47,37 +47,37 @@ export default function ProductPage() {
         </div>
 
         <div className="border rounded-lg overflow-x-auto">
-          <table className="w-full min-w-[800px] text-sm">
+          <table className="w-full min-w-[800px] text-base">
             <thead className="bg-muted">
               <tr>
-                <th className="p-3 text-left w-12">No</th>
-                <th className="p-3 text-left w-16">Image</th>
-                <th className="p-3 text-left">Name</th>
-                <th className="p-3 text-left">Category</th>
-                <th className="p-3 text-left">Status</th>
-                <th className="p-3 text-right">Action</th>
+                <th className="px-4 py-2 text-left w-12">No</th>
+                <th className="px-4 py-2 text-left w-16">Image</th>
+                <th className="px-4 py-2 text-left">Name</th>
+                <th className="px-4 py-2 text-left">Category</th>
+                <th className="px-4 py-2 text-left">Status</th>
+                <th className="px-4 py-2 text-right">Action</th>
               </tr>
             </thead>
 
             <tbody>
               {products.map((p, i) => (
                 <tr key={p.id} className="border-t">
-                  <td className="p-3">{i + 1}</td>
+                  <td className="px-4 py-2">{i + 1}</td>
 
-                  <td className="p-3">
+                  <td className="px-4 py-2">
                     <Image
                       src={p.image_url || "/placeholder.png"}
-                      width={40}
-                      height={40}
+                      width={48}
+                      height={48}
                       alt=""
-                      className="rounded"
+                      className="rounded object-cover"
                     />
                   </td>
 
-                  <td className="p-3">{p.name}</td>
-                  <td className="p-3">{p.category_name}</td>
+                  <td className="px-4 py-2">{p.name}</td>
+                  <td className="px-4 py-2">{p.category_name}</td>
 
-                  <td className="p-3">
+                  <td className="px-4 py-2">
                     <Button
                       size="sm"
                       variant="outline"
@@ -90,7 +90,7 @@ export default function ProductPage() {
                     </Button>
                   </td>
 
-                  <td className="p-3">
+                  <td className="px-4 py-2">
                     <div className="flex justify-end gap-2">
                       <Button
                         size="sm"

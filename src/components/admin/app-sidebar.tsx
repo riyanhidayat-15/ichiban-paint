@@ -51,7 +51,7 @@ const AppSidebar = () => {
                 <div className="bg-red-600 flex p-2 items-center justify-center rounded-md">
                   <PaintBucket className="size-4" />
                 </div>
-                Ichiban Paint
+                <h1 className="text-lg font-bold">ICHIBAN PAINT</h1>
               </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -59,15 +59,25 @@ const AppSidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Main Menu</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-xs font-semibold tracking-wider uppercase text-muted-foreground px-2">
+            Main Menu
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menus.map((item) => (
                 <SidebarMenuItem key={item.href}>
-                  <SidebarMenuButton asChild isActive={pathName === item.href}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={pathName === item.href}
+                    className={`py-4 my-1 ${
+                      pathName === item.href
+                        ? "!bg-red-600 !text-white hover:!bg-red-700 hover:!text-white"
+                        : ""
+                    }`}
+                  >
                     <Link href={item.href} className="flex items-center gap-2">
-                      <item.icon size={16} />
-                      <span>{item.label}</span>
+                      <item.icon size={18} />
+                      <span className="text-sm font-medium">{item.label}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
