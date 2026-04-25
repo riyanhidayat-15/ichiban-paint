@@ -1,0 +1,291 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.lp { width: 100%; overflow: hidden; }
+
+.nav { display: flex; justify-content: space-between; align-items: center; padding: 14px 28px; background: #111; border-bottom: 1px solid #222; }
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-icon { background: #C0392B; width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+.nav-icon svg { width: 18px; height: 18px; }
+.nav-brand { color: #fff; font-size: 15px; font-weight: 500; letter-spacing: 0.04em; }
+.nav-links { display: flex; gap: 24px; }
+.nav-links a { color: #aaa; font-size: 13px; text-decoration: none; }
+.nav-cta { background: #C0392B; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; }
+
+.hero { background: #111; padding: 60px 28px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; min-height: 340px; }
+.hero-left { padding-bottom: 48px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; background: #1a1a1a; border: 1px solid #333; color: #C0392B; font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 99px; margin-bottom: 20px; letter-spacing: 0.06em; text-transform: uppercase; }
+.hero-badge span { width: 6px; height: 6px; background: #C0392B; border-radius: 50%; display: inline-block; }
+.hero-title { font-size: 36px; font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.02em; }
+.hero-title em { color: #C0392B; font-style: normal; }
+.hero-sub { color: #888; font-size: 14px; line-height: 1.7; margin-bottom: 28px; max-width: 360px; }
+.hero-btns { display: flex; gap: 12px; align-items: center; }
+.btn-primary { background: #C0392B; color: #fff; border: none; padding: 11px 22px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; }
+.btn-ghost { background: transparent; color: #aaa; border: 1px solid #333; padding: 11px 22px; border-radius: 8px; font-size: 14px; cursor: pointer; }
+.hero-stats { display: flex; gap: 28px; margin-top: 36px; padding-top: 28px; border-top: 1px solid #222; }
+.stat-val { color: #fff; font-size: 22px; font-weight: 700; }
+.stat-lbl { color: #666; font-size: 11px; margin-top: 2px; }
+
+.hero-right { display: flex; justify-content: center; align-items: flex-end; }
+.can-wrap { position: relative; width: 180px; height: 280px; }
+.can-body { width: 120px; height: 240px; background: #C0392B; border-radius: 12px 12px 8px 8px; margin: 0 auto; position: relative; overflow: hidden; }
+.can-top { width: 80px; height: 24px; background: #999; border-radius: 6px 6px 0 0; margin: 0 auto; }
+.can-nozzle { width: 14px; height: 18px; background: #bbb; border-radius: 3px 3px 0 0; margin: 0 auto; }
+.can-label { position: absolute; top: 50px; left: 0; right: 0; text-align: center; }
+.can-brand { color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; }
+.can-name { color: #fff; font-size: 9px; opacity: 0.8; margin-top: 2px; }
+.can-stripe { position: absolute; bottom: 0; left: 0; right: 0; height: 70px; background: #111; border-radius: 0 0 8px 8px; display: flex; align-items: center; justify-content: center; }
+.can-vol { color: #fff; font-size: 11px; font-weight: 700; }
+.can-shadow { width: 80px; height: 12px; background: #000; border-radius: 50%; margin: 0 auto; opacity: 0.5; }
+.color-dots { display: flex; gap: 6px; justify-content: center; margin-top: 16px; flex-wrap: wrap; padding: 0 20px; }
+.dot { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #333; }
+
+.section { padding: 56px 28px; }
+.section-dark { background: #111; }
+.section-light { background: #f9f9f9; }
+.section-white { background: #fff; border-top: 0.5px solid var(--color-border-tertiary); border-bottom: 0.5px solid var(--color-border-tertiary); }
+
+.section-label { font-size: 11px; font-weight: 500; color: #C0392B; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+.section-title-dark { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.2; }
+.section-title-light { font-size: 26px; font-weight: 700; color: #111; margin-bottom: 8px; line-height: 1.2; }
+.section-sub-dark { color: #777; font-size: 14px; margin-bottom: 36px; }
+.section-sub-light { color: #666; font-size: 14px; margin-bottom: 36px; }
+
+.features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.feat-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 20px; }
+.feat-icon { width: 40px; height: 40px; background: #C0392B22; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.feat-icon svg { width: 20px; height: 20px; stroke: #C0392B; }
+.feat-title { color: #fff; font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+.feat-desc { color: #666; font-size: 12px; line-height: 1.6; }
+
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.step-card { background: #fff; border: 0.5px solid var(--color-border-tertiary); border-radius: 12px; padding: 20px; position: relative; }
+.step-num { width: 28px; height: 28px; background: #C0392B; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+.step-title { color: #111; font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+.step-desc { color: #888; font-size: 12px; line-height: 1.6; }
+
+.colors-grid { display: flex; gap: 8px; flex-wrap: wrap; }
+.color-swatch { width: 44px; height: 44px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.1); position: relative; cursor: pointer; }
+.color-label { font-size: 10px; color: #888; text-align: center; margin-top: 4px; white-space: nowrap; overflow: hidden; }
+.color-item { width: 52px; }
+
+.channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.channel-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 10px; padding: 16px; text-align: center; }
+.channel-icon { width: 40px; height: 40px; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.channel-name { color: #fff; font-size: 13px; font-weight: 500; }
+.channel-sub { color: #666; font-size: 11px; margin-top: 3px; }
+
+.footer { background: #0a0a0a; padding: 28px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #1a1a1a; }
+.footer-brand { color: #555; font-size: 12px; }
+.footer-copy { color: #333; font-size: 11px; }
+</style>
+
+<div class="lp">
+
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="nav-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M12 22c4.97 0 9-4.03 9-9-4.97 0-9 4.03-9 9z"/><path d="M12 22C7.03 22 3 17.97 3 13c4.97 0 9 4.03 9 9z"/><path d="M12 2v8"/></svg>
+    </div>
+    <span class="nav-brand">ICHIBAN PAINT</span>
+  </div>
+  <div class="nav-links">
+    <a href="#">Produk</a>
+    <a href="#">Cara Pakai</a>
+    <a href="#">Warna</a>
+    <a href="#">Distributor</a>
+  </div>
+  <button class="nav-cta">Beli Sekarang</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><span></span>Japan Technology</div>
+    <h1 class="hero-title">Cat Semprot<br><em>All In One</em><br>Magic Paint</h1>
+    <p class="hero-sub">Hasil profesional, cepat kering, tahan lama. Cocok untuk plastik, metal, dan kayu. Tersedia dalam 35+ pilihan warna.</p>
+    <div class="hero-btns">
+      <button class="btn-primary">Lihat Produk</button>
+      <button class="btn-ghost">Cara Pemakaian</button>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-val">35+</div>
+        <div class="stat-lbl">Pilihan Warna</div>
+      </div>
+      <div>
+        <div class="stat-val">300cc</div>
+        <div class="stat-lbl">Volume</div>
+      </div>
+      <div>
+        <div class="stat-val">9</div>
+        <div class="stat-lbl">Cabang Retail</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div>
+      <div class="can-wrap">
+        <div class="can-nozzle"></div>
+        <div class="can-top"></div>
+        <div class="can-body">
+          <div class="can-label">
+            <div style="color:#fff;font-size:16px;font-weight:800;letter-spacing:0.08em;">ICHIBAN</div>
+            <div style="color:#ffccc9;font-size:9px;margin-top:4px;letter-spacing:0.05em;">ALL-IN-ONE</div>
+            <div style="color:#ffccc9;font-size:8px;opacity:0.7;">MAGIC PAINT</div>
+            <div style="margin-top:16px;background:#fff2;border-radius:6px;padding:4px 8px;display:inline-block;">
+              <div style="color:#fff;font-size:8px;font-weight:600;">MORE SHINING</div>
+            </div>
+          </div>
+          <div class="can-stripe">
+            <div>
+              <div style="color:#fff;font-size:10px;font-weight:700;">300ml</div>
+              <div style="color:#888;font-size:9px;">Acrylic Base</div>
+            </div>
+          </div>
+        </div>
+        <div class="can-shadow"></div>
+      </div>
+      <div class="color-dots" style="margin-top:12px;">
+        <div class="dot" style="background:#C0392B;"></div>
+        <div class="dot" style="background:#1a1a2e;"></div>
+        <div class="dot" style="background:#f5f5f5;border-color:#999;"></div>
+        <div class="dot" style="background:#2980b9;"></div>
+        <div class="dot" style="background:#27ae60;"></div>
+        <div class="dot" style="background:#f39c12;"></div>
+        <div class="dot" style="background:#8e44ad;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="section-label">Key Features</div>
+  <div class="section-title-dark">Kenapa Pilih Ichiban?</div>
+  <div class="section-sub-dark">Diformulasikan khusus untuk hasil terbaik di berbagai permukaan.</div>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2"/></svg>
+      </div>
+      <div class="feat-title">More Shining</div>
+      <div class="feat-desc">Hasil akhir berkilau elegan dan profesional yang mempercantik seluruh permukaan.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="feat-title">Quick Dry Formula</div>
+      <div class="feat-desc">Formulasi cepat kering mempercepat proses tanpa mengorbankan hasil sempurna.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="feat-title">High Coverage</div>
+      <div class="feat-desc">Cukup 2x semprot, hasil cat tahan lama dan tidak mudah mengelupas maupun pudar.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="feat-title">UV-Resistant Colors</div>
+      <div class="feat-desc">Perlindungan UV efektif menjaga warna tetap cerah meskipun terkena sinar matahari langsung.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-white">
+  <div class="section-label">Cara Pemakaian</div>
+  <div class="section-title-light">3 Langkah Mudah</div>
+  <div class="section-sub-light">Dapatkan hasil profesional dengan cara yang simpel.</div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-title">Bersihkan Permukaan</div>
+      <div class="step-desc">Pastikan permukaan kering, bebas dari minyak, karat, dan kotoran sebelum pengecatan.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-title">Kocok Kaleng</div>
+      <div class="step-desc">Kocok selama 15–30 detik agar cat tercampur rata dan hasil optimal.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-title">Semprot 2–3 Lapis</div>
+      <div class="step-desc">Semprot dengan jeda 5 menit tiap lapisan dari jarak 30 cm untuk hasil merata.</div>
+    </div>
+  </div>
+  <div style="margin-top:16px;background:#fff8f8;border:1px solid #fdd;border-radius:10px;padding:16px 20px;">
+    <div style="font-size:12px;font-weight:500;color:#C0392B;margin-bottom:6px;">Sesudah pemakaian</div>
+    <div style="font-size:13px;color:#555;">Balik kaleng lalu semprot selama 3 detik untuk membersihkan sisa cat di nozzle.</div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="section-label">Pilihan Warna</div>
+  <div class="section-title-dark">35+ Pilihan Warna</div>
+  <div class="section-sub-dark">Primer, solid, metallic, glossy, hingga fluorescent.</div>
+  <div class="colors-grid">
+    <div class="color-item"><div class="color-swatch" style="background:#C0392B;"></div><div class="color-label" style="color:#777;">Racing Red</div></div>
+    <div class="color-item"><div class="color-swatch" style="background:#1a1a2e;"></div><div class="color-label" style="color:#777;">Midnight</div></div>
+    <div class="color-item"><div class="color-swatch" style="background:#f0f0f0;border:1px solid #ddd;"></div><div class="color-label" style="color:#777;">Pearl White</div></div>
+    <div class="color-item"><div class="color-swatch" style="background:#2980b9;"></div><div class="color-label" style="color:#777;">Ocean Blue</div></div>
+    <div class="color-item"><div class="color-swatch" style="background:#27ae60;"></div><div class="color-label" style="color:#777;">Lime Green</div></div>
+    <div class="color-item"><div class="color-swatch" style="background:#f39c12;"></div><div class="color-label" style="color:#777;">Sunset Gold</div></div>
+    <div class="color-item"><div class="color-swatch" style="background:#8e44ad;"></div><div class="color-label" style="color:#777;">Violet</div></div>
+    <div class="color-item"><div class="color-swatch" style="background:#888;"></div><div class="color-label" style="color:#777;">Silver Met.</div></div>
+    <div class="color-item"><div class="color-swatch" style="background:#222;border:1px solid #444;"></div><div class="color-label" style="color:#777;">Gloss Black</div></div>
+    <div class="color-item"><div class="color-swatch" style="background:#00eeff;"></div><div class="color-label" style="color:#777;">Fluor Cyan</div></div>
+    <div class="color-item"><div class="color-swatch" style="background:#ff4f00;"></div><div class="color-label" style="color:#777;">Fluor Orange</div></div>
+    <div class="color-item"><div class="color-swatch" style="background:#c8a96e;"></div><div class="color-label" style="color:#777;">Primer Coat</div></div>
+  </div>
+  <div style="margin-top:20px;font-size:12px;color:#555;">+ 23 warna lainnya tersedia di toko resmi</div>
+</section>
+
+<section class="section section-dark" style="padding-top:0;">
+  <div class="section-label">Beli Di</div>
+  <div class="section-title-dark">Tersedia Di</div>
+  <div class="section-sub-dark">Online maupun offline, mudah dijangkau di seluruh Indonesia.</div>
+  <div class="channel-grid">
+    <div class="channel-card">
+      <div class="channel-icon" style="background:#111;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#010101"/><path d="M12.525 2.4c-5.4 0-9.525 4.05-9.525 9.6 0 4.2 2.7 7.875 6.525 9.15.475.075.65-.2.65-.45 0-.225-.025-1-.025-1.8-2.65.575-3.2-1.15-3.2-1.15-.425-1.1-1.05-1.4-1.05-1.4-.875-.575.075-.575.075-.575.95.075 1.45.975 1.45.975.85 1.45 2.225 1.05 2.775.8.075-.625.325-1.05.6-1.3-2.1-.225-4.325-1.05-4.325-4.725 0-1.05.375-1.9 1-2.575-.1-.225-.425-1.225.1-2.55 0 0 .825-.25 2.675 1 .775-.225 1.6-.325 2.425-.325.825 0 1.65.1 2.425.325 1.85-1.25 2.675-1 2.675-1 .525 1.325.2 2.325.1 2.55.625.675 1 1.525 1 2.575 0 3.675-2.225 4.5-4.35 4.725.35.3.65.875.65 1.775 0 1.3-.025 2.325-.025 2.65 0 .25.175.525.65.45C18.825 19.875 21.525 16.2 21.525 12c0-5.55-4.125-9.6-9-9.6z" fill="white"/></svg>
+      </div>
+      <div class="channel-name">TikTok Shop</div>
+      <div class="channel-sub">ichibanmagic.paint</div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-icon" style="background:#EE4D2D22;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#EE4D2D"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+      </div>
+      <div class="channel-name">Shopee</div>
+      <div class="channel-sub">Ichiban Paint</div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-icon" style="background:#00AA5B22;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#00AA5B"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      </div>
+      <div class="channel-name">Tokopedia</div>
+      <div class="channel-sub">Ichiban Paint Official</div>
+    </div>
+    <div class="channel-card" style="grid-column: span 3;">
+      <div style="display:flex;align-items:center;gap:12px;justify-content:center;">
+        <div class="channel-icon" style="background:#C0392B22;margin:0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
+        <div style="text-align:left;">
+          <div class="channel-name">9 Cabang Retail</div>
+          <div class="channel-sub">Tersebar di seluruh Indonesia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-brand">ICHIBAN PAINT — PT. Warnatama Cemerlang</div>
+  <div class="footer-copy">cemerlangpaint.com</div>
+</footer>
+
+</div>
