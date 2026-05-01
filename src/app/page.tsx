@@ -8,9 +8,7 @@ import Navbar from "@/components/navbar";
 
 const IchibanPaintLP = () => {
   return (
-    <div className="min-h-screen bg-zinc-950 text-white font-sans">
-      <Navbar />
-
+    <div className=" bg-zinc-950 text-white font-sans">
       <HeroSection />
 
       <Features />
