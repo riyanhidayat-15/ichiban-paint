@@ -19,6 +19,7 @@ import {
   LogOut,
   Package,
   PaintBucket,
+  Video,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -40,6 +41,7 @@ const AppSidebar = () => {
   const menus = [
     { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
     { label: "Products", href: "/admin/products", icon: Package },
+    { label: "Contents", href: "/admin/contents", icon: Video },
   ];
   return (
     <Sidebar>
