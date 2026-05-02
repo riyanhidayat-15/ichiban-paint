@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import { useState } from "react";
 
 const HeroSection = () => {
+  const [open, setOpen] = useState(false);
+  const videoUrl = "https://www.youtube.com/embed/6vJHriaPwAs?autoplay=1";
   return (
     <section
       id="home"
@@ -41,7 +45,10 @@ const HeroSection = () => {
                 <span className="group-hover:translate-x-1 transition">→</span>
               </button>
 
-              <button className="border border-zinc-600 hover:border-zinc-400 hover:bg-zinc-900 transition-all duration-300 text-white px-5 py-2 rounded-2xl font-medium text-sm">
+              <button
+                onClick={() => setOpen(true)}
+                className="border border-zinc-600 hover:border-zinc-400 hover:bg-zinc-900 transition-all duration-300 text-white px-5 py-2 rounded-2xl font-medium text-sm"
+              >
                 Video Cara Pakai
               </button>
             </div>
@@ -84,6 +91,28 @@ const HeroSection = () => {
         <span className="text-xs tracking-widest">SCROLL</span>
         <div className="w-px h-12 bg-gradient-to-b from-transparent via-zinc-500 to-transparent" />
       </div>
+      {open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4">
+          <div className="relative w-full max-w-md">
+            {/* Close button */}
+            <button
+              onClick={() => setOpen(false)}
+              className="absolute top-2 right-2 text-white text-xl z-50"
+            >
+              ✕
+            </button>
+
+            {/* Video iframe */}
+            <div className="aspect-[9/16] w-full rounded-2xl overflow-hidden">
+              <iframe
+                src={videoUrl}
+                className="w-full h-full"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
